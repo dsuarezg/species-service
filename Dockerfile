@@ -17,8 +17,8 @@ RUN mvn clean package -DskipTests
 FROM openjdk:21-slim
 WORKDIR /app
 
-# 3) Copiar el JAR compilado
-COPY --from=builder /app/target/*.jar ./discovery-server.jar
+# 3) Copiar el JAR compilado y renombrarlo
+COPY --from=builder /app/target/species-service-0.0.1-SNAPSHOT.jar ./species-service.jar
 
 # 4) Exponemos el puerto 8081 (documentativo; Railway mapeará PORT)
 EXPOSE 8081
